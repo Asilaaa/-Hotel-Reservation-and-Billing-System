@@ -1,11 +1,9 @@
-// App.js
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import './App.css';
 
-// Components
 import Sidebar from './components/Sidebar';
 import TopBar from './components/TopBar';
 import Dashboard from './pages/Dashboard';
@@ -18,25 +16,74 @@ const theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#6366f1',
-      light: '#818cf8',
-      dark: '#4338ca',
+      main: '#d8b4fe',
+      light: '#e9d5ff',
+      dark: '#c084fc',
     },
     secondary: {
-      main: '#ec4899',
-      light: '#f472b6',
-      dark: '#db2777',
+      main: '#f9a8d4',
+      light: '#fbcfe8',
+      dark: '#f472b6',
     },
     background: {
-      default: '#0f172a',
-      paper: '#1e293b',
+      default: '#1e1b2e',
+      paper: '#2a2438',
+    },
+    success: {
+      main: '#a5b4fc',
+      light: '#c7d2fe',
+      dark: '#818cf8',
+    },
+    info: {
+      main: '#c7d2fe',
+      light: '#e0e7ff',
+      dark: '#a5b4fc',
     },
   },
   typography: {
-    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Lobster", "Pacifico", "Caveat", cursive',
+    h3: {
+      fontWeight: 'normal',
+      background: 'linear-gradient(135deg, #f9a8d4 0%, #d8b4fe 50%, #a5b4fc 100%)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      backgroundClip: 'text',
+    },
+    h4: {
+      fontFamily: '"Lobster", "Pacifico", "Caveat", cursive',
+      fontWeight: 'normal',
+    },
+    h6: {
+      fontFamily: '"Lobster", "Pacifico", "Caveat", cursive',
+      fontWeight: 'normal',
+    },
+    body1: {
+      fontFamily: '"Pacifico", "Caveat", "Lobster", cursive',
+    },
+    body2: {
+      fontFamily: '"Pacifico", "Caveat", "Lobster", cursive',
+    },
   },
   shape: {
-    borderRadius: 12,
+    borderRadius: 16,
+  },
+  components: {
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          background: 'rgba(255, 255, 255, 0.05)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+        },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          fontFamily: '"Pacifico", "Caveat", "Lobster", cursive',
+        },
+      },
+    },
   },
 });
 
@@ -46,6 +93,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      {/* Glitter Background Effect */}
+      <div className="glitter-bg"></div>
       <Router>
         <div className="app">
           <Sidebar open={sidebarOpen} onToggle={setSidebarOpen} />

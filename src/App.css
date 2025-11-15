@@ -1,4 +1,11 @@
-/* App.css */
+/* Add this to the top of your App.css */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&family=Caveat:wght@400..700&display=swap');
+
+/* Force Lobster font for testing */
+.lobster-test {
+  font-family: 'Lobster', cursive !important;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,7 +15,72 @@
 .app {
   display: flex;
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background: linear-gradient(135deg, #1e1b2e 0%, #2a2438 50%, #3730a3 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glitter Background Effect */
+.glitter-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(249, 168, 212, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(216, 180, 254, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(165, 180, 252, 0.05) 0%, transparent 50%);
+  animation: sparkle 8s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* Floating Glitter Particles */
+.glitter-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #f9a8d4;
+  border-radius: 50%;
+  animation: float-particle 6s ease-in-out infinite;
+  box-shadow: 0 0 10px #f9a8d4;
+}
+
+.glitter-particle:nth-child(2n) {
+  background: #d8b4fe;
+  box-shadow: 0 0 10px #d8b4fe;
+  animation-delay: -2s;
+}
+
+.glitter-particle:nth-child(3n) {
+  background: #a5b4fc;
+  box-shadow: 0 0 10px #a5b4fc;
+  animation-delay: -4s;
+}
+
+@keyframes float-particle {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  25% {
+    transform: translate(100px, -150px) rotate(90deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(200px, 0) rotate(180deg);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(100px, 150px) rotate(270deg);
+    opacity: 1;
+  }
 }
 
 .main-content {
@@ -29,53 +101,143 @@
 
 /* Custom scrollbar */
 .content-area::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 .content-area::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: rgba(42, 36, 56, 0.5);
+  border-radius: 10px;
 }
 
 .content-area::-webkit-scrollbar-thumb {
-  background: #6366f1;
-  border-radius: 3px;
+  background: linear-gradient(135deg, #f9a8d4 0%, #d8b4fe 100%);
+  border-radius: 10px;
 }
 
 .content-area::-webkit-scrollbar-thumb:hover {
-  background: #818cf8;
+  background: linear-gradient(135deg, #fbcfe8 0%, #e9d5ff 100%);
 }
 
-/* Glass morphism effect */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Gradient text */
+.glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.glass:hover::before {
+  left: 100%;
+}
+
 .gradient-text {
-  background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+  background: linear-gradient(135deg, #f9a8d4 0%, #d8b4fe 50%, #a5b4fc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  position: relative;
 }
 
-/* Floating animation */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(120deg); }
+  66% { transform: translateY(5px) rotate(240deg); }
 }
 
 .float {
   animation: float 6s ease-in-out infinite;
 }
 
-/* Pulse animation */
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
+  0%, 100% { 
+    box-shadow: 
+      0 0 20px rgba(249, 168, 212, 0.4),
+      0 0 40px rgba(216, 180, 254, 0.2),
+      0 0 60px rgba(165, 180, 252, 0.1);
+  }
+  50% { 
+    box-shadow: 
+      0 0 30px rgba(249, 168, 212, 0.6),
+      0 0 60px rgba(216, 180, 254, 0.4),
+      0 0 90px rgba(165, 180, 252, 0.2);
+  }
 }
 
 .pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shimmer 2s infinite;
+}
+
+/* Heart beat animation */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.1); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.05); }
+}
+
+.heartbeat {
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.bounce {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* Rotate animation */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.rotate {
+  animation: rotate 20s linear infinite;
+}
+
+/* Princess crown effect */
+.crown::before {
+  content: '👑';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  animation: bounce 2s ease-in-out infinite;
 }
