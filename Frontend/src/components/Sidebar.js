@@ -36,10 +36,10 @@ const Sidebar = ({ open, onToggle }) => {
     <Drawer
       variant="permanent"
       sx={{
-        width: open ? 180 : 80,
+        width: open ? 0 : 40,
         flexShrink: 0,
         '& .MuiDrawer-paper': {
-          width: open ? 280 : 80,
+          width: open ? 300 : 40,
           boxSizing: 'border-box',
           background: 'linear-gradient(180deg, #2a2438 0%, #1e1b2e 100%)',
           borderRight: '1px solid rgba(249, 168, 212, 0.2)',
