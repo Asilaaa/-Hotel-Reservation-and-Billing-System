@@ -1,28 +1,42 @@
 package com.example.demo.Controllers;
 
-import com.example.demo.Entities.Hotel;
-import com.example.demo.Repositories.HotelRepository;
+import com.example.demo.DTOs.HotelDTO;
+import com.example.demo.Services.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/hotels")
 @CrossOrigin(origins = "http://localhost:3000")
 public class HotelController {
 
     @Autowired
-    private HotelRepository hotelRepository;
+    private HotelService hotelService;
 
-    @GetMapping("/hotels")
-    public List<Hotel> getAllHotels() {
-        return hotelRepository.findAll();
+    @GetMapping
+    public ResponseEntity<List<HotelDTO>> getAllHotels() {
+        try {
+            List<HotelDTO> hotels = hotelService.getAllHotels();
+            return ResponseEntity.ok(hotels);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
-    @GetMapping("/hotels/{id}")
-    public Hotel getHotelById(@PathVariable Long id) {
-        return hotelRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Hotel not found with id: " + id));
+    @GetMapping("/{id}")
+    public ResponseEntity<HotelDTO> getHotelById(@PathVariable Long id) {
+        try {
+            HotelDTO hotel = hotelService.getHotelById(id);
+            if (hotel != null) {
+                return ResponseEntity.ok(hotel);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
     }
 }

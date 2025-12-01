@@ -26,7 +26,7 @@ public class Hotel {
         return name;
     }
 
-    public Long getId(){
+    public Long getHotelId(){
         return hotelId;
     }
 
@@ -40,5 +40,15 @@ public class Hotel {
 
     public Integer getRating() {
         return rating;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+    public List<Staff> getStaff() {
+        return staff;
+    }
+    public void setHotelId(Long hotelId) {
+        this.hotelId = hotelId;
     }
 }
