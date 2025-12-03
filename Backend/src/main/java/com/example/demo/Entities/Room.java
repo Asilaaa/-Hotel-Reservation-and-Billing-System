@@ -1,6 +1,6 @@
 package com.example.demo.Entities;
-import jakarta.persistence.*;
 
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +19,22 @@ public class Room {
     private RoomStatus status;
 
     private BigDecimal ratePerNight;
+
+    @ManyToOne
+    @JoinColumn(name = "hotel_id")
+    private Hotel hotel;
+
+    @ManyToOne
+    @JoinColumn(name = "room_type_id")
+    private RoomType roomType;
+
+    @OneToMany(mappedBy = "room")
+    private List<ReservationRoom> reservationRooms = new ArrayList<>();
+
+    // Getters
+    public Long getRoomId() {
+        return roomId;
+    }
 
     public String getRoomNumber() {
         return roomNumber;
@@ -40,16 +56,36 @@ public class Room {
         return roomType;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "hotel_id")
-    private Hotel hotel;
+    public List<ReservationRoom> getReservationRooms() {
+        return reservationRooms;
+    }
 
-    @ManyToOne
-    @JoinColumn(name = "room_type_id")
-    private RoomType roomType;
+    // Setters
+    public void setRoomId(Long roomId) {
+        this.roomId = roomId;
+    }
 
-    @OneToMany(mappedBy = "room")
-    private List<ReservationRoom> reservationRooms = new ArrayList<>();
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber;
+    }
 
+    public void setStatus(RoomStatus status) {
+        this.status = status;
+    }
 
+    public void setRatePerNight(BigDecimal ratePerNight) {
+        this.ratePerNight = ratePerNight;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    public void setRoomType(RoomType roomType) {
+        this.roomType = roomType;
+    }
+
+    public void setReservationRooms(List<ReservationRoom> reservationRooms) {
+        this.reservationRooms = reservationRooms;
+    }
 }

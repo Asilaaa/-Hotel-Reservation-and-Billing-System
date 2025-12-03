@@ -9,7 +9,7 @@ import TopBar from './components/TopBar';
 import Dashboard from './pages/Dashboard';
 import Analytics from './pages/Analytics';
 import Users from './pages/Users';
-import Products from './pages/Products';
+import Reservations from './pages/Reservations'; // Changed from Products
 import Settings from './pages/Settings';
 
 const theme = createTheme({
@@ -105,7 +105,7 @@ function App() {
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/analytics" element={<Analytics />} />
                 <Route path="/users" element={<Users />} />
-                <Route path="/products" element={<Products />} />
+                <Route path="/reservations" element={<Reservations />} /> {/* Changed from /products */}
                 <Route path="/settings" element={<Settings />} />
               </Routes>
             </div>

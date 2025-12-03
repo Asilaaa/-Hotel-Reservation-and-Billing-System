@@ -1,8 +1,6 @@
 import React from 'react';
 
-export const CustomizedDot = (props) => {
-  const { cx, cy, payload, onDotClick } = props;
-
+export const CustomizedDot = ({ cx, cy, payload, onDotClick, color = "#8884d8", size = 6 }) => {
   const handleClick = () => {
     if (payload && payload.periodDate && onDotClick) {
       const year = payload.periodDate.substring(0, 4);
@@ -14,8 +12,8 @@ export const CustomizedDot = (props) => {
     <circle 
       cx={cx} 
       cy={cy} 
-      r={6} 
-      fill="#8884d8" 
+      r={size} 
+      fill={color}
       stroke="#fff" 
       strokeWidth={2}
       onClick={handleClick}
@@ -24,9 +22,7 @@ export const CustomizedDot = (props) => {
   );
 };
 
-export const CustomizedActiveDot = (props) => {
-  const { cx, cy, payload, onDotClick } = props;
-
+export const CustomizedActiveDot = ({ cx, cy, payload, onDotClick, color = "#ff7300", size = 8 }) => {
   const handleClick = () => {
     if (payload && payload.periodDate && onDotClick) {
       const year = payload.periodDate.substring(0, 4);
@@ -38,8 +34,8 @@ export const CustomizedActiveDot = (props) => {
     <circle 
       cx={cx} 
       cy={cy} 
-      r={8} 
-      fill="#ff7300" 
+      r={size} 
+      fill={color}
       stroke="#fff" 
       strokeWidth={2}
       onClick={handleClick}

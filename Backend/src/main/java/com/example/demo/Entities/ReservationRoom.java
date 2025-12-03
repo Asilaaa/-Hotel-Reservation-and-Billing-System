@@ -1,4 +1,5 @@
 package com.example.demo.Entities;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -15,4 +16,30 @@ public class ReservationRoom {
     @ManyToOne
     @JoinColumn(name = "room_id")
     private Room room;
+
+    // Getters
+    public Long getId() {
+        return id;
+    }
+
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    // Setters
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
 }

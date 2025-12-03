@@ -14,7 +14,7 @@ import {
   Dashboard as DashboardIcon,
   Analytics as AnalyticsIcon,
   People as PeopleIcon,
-  Inventory as InventoryIcon,
+  Hotel as HotelIcon, // Changed from InventoryIcon
   Settings as SettingsIcon,
   ChevronLeft as ChevronLeftIcon,
   ChevronRight as ChevronRightIcon,
@@ -25,7 +25,7 @@ const menuItems = [
   { text: 'Dashboard', icon: <DashboardIcon />, path: '/', emoji: '🏠' },
   { text: 'Analytics', icon: <AnalyticsIcon />, path: '/analytics', emoji: '📊' },
   { text: 'Users', icon: <PeopleIcon />, path: '/users', emoji: '👥' },
-  { text: 'Products', icon: <InventoryIcon />, path: '/products', emoji: '🛍️' },
+  { text: 'Reservations', icon: <HotelIcon />, path: '/reservations', emoji: '🏨' }, // Changed from Products
   { text: 'Settings', icon: <SettingsIcon />, path: '/settings', emoji: '⚙️' },
 ];
 

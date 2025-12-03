@@ -39,4 +39,8 @@ public class RoomType {
     public List<Room> getRooms() {
         return rooms;
     }
+
+    public Long getRoomTypeId() {
+        return roomTypeId;
+    }
 }
